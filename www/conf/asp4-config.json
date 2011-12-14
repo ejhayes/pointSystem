@@ -1,0 +1,64 @@
+{
+  "system": {
+    "post_processors": [
+    ],
+    "libs": [
+      "@ServerRoot@/lib",
+      "@ProjectRoot@/common/lib"
+    ],
+    "load_modules": [
+    ],
+    "env_vars": {
+    },
+    "settings": {
+    }
+  },
+  "errors": {
+    "error_handler":    "ASP4::ErrorHandler",
+    "mail_errors_to":   "eric@inflection.com",
+    "mail_errors_from": "root@localhost",
+    "smtp_server":      "localhost"
+  },
+  "web": {
+    "application_name": "pointer",
+    "application_root": "@ServerRoot@",
+    "www_root":         "@ServerRoot@/htdocs",
+    "handler_root":     "@ServerRoot@/handlers",
+    "page_cache_root":  "/tmp/PAGE_CACHE",
+    "handler_resolver": "ASP4::HandlerResolver",
+    "handler_runner":   "ASP4::HandlerRunner",
+    "filter_resolver":  "ASP4::FilterResolver",
+    "request_filters": [
+			{
+	      "uri_match":  ".*",
+	      "class":      "ASP4x::Router"
+	    }
+    ],
+    "routes": [
+			{
+				"name": "api.points",
+				"path": "/v1.0/:method",
+				"target": "/handlers/pointer.api.main",
+				"method": "*" 
+		  }
+    ],
+    "disable_persistence": [
+    ]
+  },
+  "data_connections": {
+    "session": {
+      "manager":          "ASP4::SessionStateManager",
+      "cookie_name":      "session-id",
+      "cookie_domain":    "*",
+      "session_timeout":  "*",
+      "dsn":              "DBI:mysql:pointer:localhost",
+      "username":         "root",
+      "password":         "ubuntu33"
+    },
+    "main": {
+      "dsn":              "DBI:mysql:pointer:localhost",
+      "username":         "root",
+      "password":         "ubuntu33"
+    }
+  }
+}
