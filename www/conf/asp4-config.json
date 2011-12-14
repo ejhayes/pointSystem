@@ -15,7 +15,7 @@
   },
   "errors": {
     "error_handler":    "ASP4::ErrorHandler",
-    "mail_errors_to":   "eric@inflection.com",
+    "mail_errors_to":  "user@example.com",
     "mail_errors_from": "root@localhost",
     "smtp_server":      "localhost"
   },
